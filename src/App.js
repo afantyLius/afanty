@@ -1,4 +1,6 @@
 import React from 'react';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
+
 import Header from './common/header'
 import Rotation from './pages/rotation'
 import Service from './pages/service';
@@ -8,14 +10,16 @@ import Quality from './pages/quality'
 import Synopsis from './pages/synopsis'
 import Contact from './pages/contact';
 
-const pageArray = [<Rotation/>,<Service/>,<News/>,<Case/>,<Quality/>,<Synopsis/>,<Contact/>]
+
+
+const pageArray = [<Rotation />, <Service />, <News />, <Case />, <Quality />, <Synopsis />, <Contact />]
 
 export default class App extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            navIndex:0
+            navIndex: 0
         }
     }
 
@@ -24,24 +28,32 @@ export default class App extends React.Component {
         let data = event.deltaY;
         let nowNavIndex = this.state.navIndex;
 
-        if(data>0){
-         (++nowNavIndex) < 7 && this.setState((prevState)=>({navIndex:++prevState.navIndex}))
-        }else{
-         (--nowNavIndex) > -1 && this.setState((prevState)=>({navIndex:--prevState.navIndex}))
+        if (data > 0) {
+            (++nowNavIndex) < 7 && this.setState((prevState) => ({ navIndex: ++prevState.navIndex }))
+        } else {
+            (--nowNavIndex) > -1 && this.setState((prevState) => ({ navIndex: --prevState.navIndex }))
         }
     }
 
 
     handleNav = (index) => {
-        this.setState({navIndex:index})
+        this.setState({ navIndex: index })
     }
 
-    render(){
-        return(
-        <div onWheel={this.handleWheel}>
-            <Header handleNav={this.handleNav} navIndex={this.state.navIndex}/>
-            {pageArray[this.state.navIndex]}
-        </div>
+    render() {
+        return (
+            <div onWheel={this.handleWheel}>
+                <Header handleNav={this.handleNav} navIndex={this.state.navIndex} />
+                {/* <CSSTransitionGroup
+                    transitionName="indexApp"
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={1000}
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                > */}
+                    {pageArray[this.state.navIndex]}
+                {/* </CSSTransitionGroup> */}
+            </div>
         )
     }
 }

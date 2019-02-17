@@ -1,0 +1,24 @@
+
+.index-enter {
+    opacity: 0.01;
+}
+
+.index-enter.index-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+  .index-leave {
+    opacity: 1;
+  }
+  .index-leave.index-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+  .index-appear {
+    opacity: 0.01;
+  }
+  .index-appear.index-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
