@@ -34,6 +34,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "swiper": "^4.4.2"
+    "swiper": "^6.5.1"
   }
 }
